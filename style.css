@@ -1,0 +1,48 @@
+:root{
+    --regular-width: 400;
+    --bold-width: 700;
+
+    --primary-dark-gray: #1F2933;
+    --secondary-gray: #616E7C;
+    --light-gray: #F5F7FA;
+
+    --primary-red: #F02831;
+    --dark-red: #DA0B14;
+    --light-red: #F76E6E;
+
+    --text-regular: 18px;
+
+}
+body{
+    scroll-behavior: smooth;
+    font-family: "Rubik", sans-serif;
+    font-size: var(--text-regular);
+    color: var(--primary-dark-gray);
+}
+
+/* Header CSS Desktop */
+
+.subheader-top{
+    background-color: var(--primary-dark-gray);
+    color: var(--light-gray);
+    height: 5vh;
+    padding: 10px 50px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hours_of_oper{
+    display: flex;
+    gap: 15px;
+}
+
+.hours_of_oper > div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hours_of_oper  i{
+    font-size: 12px;
+}

@@ -3,13 +3,33 @@ $(document).ready(function(){
     $('.search_select_box select').selectpicker();
 })
 
+//Search By Change
+let searchBySelect = document.getElementById('searchBy');
+let searchByLicenseDiv = document.getElementById('formSearchByLicense');
+let searchByTireSizeDiv = document.getElementById('formSearchByTireSize');
+function populateLicenseForm(){
+    console.log("Event Triggered ",searchBySelect.value)
+    if(searchBySelect.value == "license"){
+        fetchStates();
+        searchByLicenseDiv.style.display = "block";
+        searchByTireSizeDiv.style.display = "none";
+        
+    }
+    else{
+        searchByLicenseDiv.style.display = "none";
+        searchByTireSizeDiv.style.display = "block";
+    }
+}
+searchBySelect.addEventListener('change', populateLicenseForm)
 
-//Search By License
+
+
+
+//Search By License Logic
 async function fetchStates() {
     try {
         const response = await fetch('search_by_license.json'); // Fetch JSON file
         const data = await response.json(); // Parse JSON response
-
         populateStates(data.states);
     } catch (error) {
         console.error("Error fetching states:", error);
@@ -22,17 +42,16 @@ function populateStates(statesArray){
         option = document.createElement("option");
         option.value = state;
         option.textContent = state;
-        if (state === "GA"){
-            option.selected="selected";
-        }
+        
         statesSelect.appendChild(option)
     });
+    $('.search_select_box select').selectpicker('refresh');
 
 }
 
 //fetchStates();
 
-//Search By Tires
+//Search By Tires Logic
 const profileSelect = document.getElementById('profiles')
 const widthSelect = document.getElementById('widths')
 const wheelSizeSelect = document.getElementById('wheelSizes')
@@ -118,31 +137,33 @@ profileSelect.addEventListener("change", populateWheelSizes);
 
 
 
-
+//Submit Form
 
 let form = document.forms['tireSearch'];
 
 document.querySelector("form").onsubmit = function (e) {
     e.preventDefault();  // Prevent default form submission
-
-    let state = this.states.value.trim(); // Get and sanitize the state value
-    let licensePlate = this.licensePlate.value;
-
-    let widthSize = widthSelect.value;
-    let profileSize = profileSelect.value;
-    let wheelSize = wheelSizeSelectSelect.value;
+    let url;
 
 
-    // if (!state) {
-    //     alert("Please select a state before continuing.");
-    //     return;
-    // }
+    if(searchBySelect.value == "license"){
+        let state = this.states.value.trim(); // Get and sanitize the state value
+        let licensePlate = this.licensePlate.value;
+        
+        if (!state) {
+            alert("Please select a state before continuing.");
+            return;
+        }
+        url = `#!search?license=${licensePlate}&license_ready=true&state=${state}&location_id=23406&search_by=license`;
+    } else{
+        let widthSize = widthSelect.value;
+        let profileSize = profileSelect.value;
+        let wheelSize = wheelSizeSelect.value;
+        url = `#!results?width=${widthSize}&height=${profileSize}&rim=${wheelSize}&order_by=best_match&display=full&location_id=23406&season_id=all&search_by=size&page=1`;
+    }
 
-    // Construct URL with query parameters
-    let searchByLicenseURL = '#!search?license=${licensePlate}&license_ready=true&state=${state}&location_id=23406&search_by=license';
-    let searchByTireSizeURL = '';
-    let redirectUrl = `http://127.0.0.1:3002/tires.html;
 
+    let redirectUrl = `http://127.0.0.1:3000/tires.html${url}`;
 
 
     window.location.href = redirectUrl; // Redirect user

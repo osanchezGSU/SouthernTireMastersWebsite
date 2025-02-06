@@ -6,7 +6,7 @@ $(document).ready(function(){
 const middleSection = document.getElementById("subheader-middle");
 let lastScrollY = window.scrollY;
 let ticking = false;
-const scrollThreshold = 10; // Prevents minor scroll triggers
+const scrollThreshold = 25; // Prevents minor scroll triggers
 
 function handleScroll() {
     if (window.scrollY > scrollThreshold) {

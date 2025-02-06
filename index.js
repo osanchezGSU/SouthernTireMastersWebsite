@@ -3,6 +3,29 @@ $(document).ready(function(){
     $('.search_select_box select').selectpicker();
 })
 
+const middleSection = document.getElementById("subheader-middle");
+let lastScrollY = window.scrollY;
+let ticking = false;
+const scrollThreshold = 10; // Prevents minor scroll triggers
+
+function handleScroll() {
+    if (window.scrollY > scrollThreshold) {
+        middleSection.classList.add("hidden");
+    } else if (window.scrollY === 0) {
+        middleSection.classList.remove("hidden");
+    }
+
+    lastScrollY = window.scrollY;
+    ticking = false;
+}
+
+document.addEventListener("scroll", () => {
+    if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+    }
+});
+
 //Search By Change
 let searchBySelect = document.getElementById('searchBy');
 let searchByLicenseDiv = document.getElementById('formSearchByLicense');
@@ -163,7 +186,7 @@ document.querySelector("form").onsubmit = function (e) {
     }
 
 
-    let redirectUrl = `http://127.0.0.1:3000/tires.html${url}`;
+    let redirectUrl = `http://127.0.0.1:3002/tires.html${url}`;
 
 
     window.location.href = redirectUrl; // Redirect user

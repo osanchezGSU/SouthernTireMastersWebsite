@@ -13,11 +13,30 @@
     --text-regular: 18px;
 
 }
+/**Lenis CSS**/
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 body{
     scroll-behavior: smooth;
     font-family: "Rubik", sans-serif;
     font-size: var(--text-regular);
     color: var(--primary-dark-gray);
+    box-sizing: border-box;
 
 }
 
@@ -25,7 +44,7 @@ body{
     height: 0;
     opacity: 0;
     visibility: hidden;
-    transition: 100ms height ease-in-out, 100ms opacity ease-in-out, 100ms visibility ease-in-out;
+    transition: 200ms height ease-in-out, 300ms opacity ease-in-out, 100ms visibility ease-in-out;
   
 }
 .subheader-middle{
@@ -34,10 +53,13 @@ body{
     width: 100vw;
     background-color: var(--light-gray);
     justify-content: center;
-    transition: 100ms height ease-in-out, 100ms opacity ease-in-out;
+    transition: 200ms height ease-in-out, 300ms opacity ease-in-out;
     display: flex;
     padding: 0px 50px;
  
+}
+.middle_right{
+    display: none;
 }
 
 
@@ -76,7 +98,7 @@ header{
     font-size: 16px;
 }
 .subheader-top .top_right{
-    grid-column: 11 / -1;
+    grid-column: 11 / span 2;
  
     
 }
@@ -203,4 +225,54 @@ a.phoneNumber{
 main{
     height: 200vh;
     z-index: 0;
+}
+
+@media (max-width: 500px){
+    .subheader-bottom, .subheader-top, .middle_middle{
+        display: none;
+    }
+    .subheader-middle{
+        height: 10vh;
+        padding: 0px 16px;
+    }
+    .subheader-content{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 500px;
+        height: 100%;  
+    }
+    .subheader-content > .middle_left{
+        grid-column: 1 / 3;
+        height: 75%;
+    }
+    .middle_right{
+        grid-column: 4;
+        justify-content: center;
+        display: flex;
+        color:var(--primary-dark-gray);
+        cursor: pointer;
+        height: 50%;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        padding: 10px 10px;
+    }
+
+    .middle_right div{
+        position: absolute;
+        box-sizing: border-box;
+        width: 25%;
+        height: 2.5px;
+        border-radius: 25px;
+        background-color: var(--primary-dark-gray);
+       
+    }
+    .middle_right div:nth-child(1){
+        top: 25%;
+    }
+    .middle_right div:nth-child(3){
+        bottom: 25%;
+    }
+
+  
 }

@@ -3,10 +3,22 @@ $(document).ready(function(){
     $('.search_select_box select').selectpicker();
 })
 
+//Lenis Scrolling
+const lenis = new Lenis({
+    autoRaf: true,
+  });
+  
+  // Listen for the scroll event and log the event data
+  lenis.on('scroll', (e) => {
+    console.log(e);
+  });
+
+//Nav Bar
+
 const middleSection = document.getElementById("subheader-middle");
 let lastScrollY = window.scrollY;
 let ticking = false;
-const scrollThreshold = 25; // Prevents minor scroll triggers
+const scrollThreshold = 1; // Prevents minor scroll triggers
 
 function handleScroll() {
     if (window.scrollY > scrollThreshold) {
@@ -25,6 +37,14 @@ document.addEventListener("scroll", () => {
         ticking = true;
     }
 });
+
+
+const hamburgerBtn = document.getElementById('hamBtn');
+hamburgerBtn.addEventListener("click", toggleHamMenu);
+function toggleHamMenu(){
+    console.log("Hamburger Button Pressed");
+}
+
 
 //Search By Change
 let searchBySelect = document.getElementById('searchBy');

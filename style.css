@@ -30,6 +30,10 @@ html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+html{
+    height: 100vh;
+    overflow: hidden;
+}
 
 body{
     scroll-behavior: smooth;
@@ -37,6 +41,7 @@ body{
     font-size: var(--text-regular);
     color: var(--primary-dark-gray);
     box-sizing: border-box;
+  
 
 }
 
@@ -50,7 +55,7 @@ body{
 .subheader-middle{
     visibility: visible;
     height: 20vh;
-    width: 100vw;
+    width: 100%;
     background-color: var(--light-gray);
     justify-content: center;
     transition: 200ms height ease-in-out, 300ms opacity ease-in-out;
@@ -76,7 +81,7 @@ header{
     background-color: var(--primary-dark-gray);
     color: var(--light-gray);
     height: 5vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     padding: 0px 50px;
@@ -223,8 +228,23 @@ a.phoneNumber{
     color: var(--primary-red)
 }
 main{
-    height: 200vh;
     z-index: 0;
+    position: relative;
+}
+
+.dropDownMenu{
+    background-color: hsl(210, 24%, 16%);
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    clip-path: circle(10px at 100% -20%);
+   
+    transition: all 1s ease-in-out;
+    position: absolute;
+    z-index: 10;
+}
+.hero{
+    height: 100vh;
 }
 
 @media (max-width: 500px){
@@ -265,13 +285,46 @@ main{
         height: 2.5px;
         border-radius: 25px;
         background-color: var(--primary-dark-gray);
+        transition: 150ms opacity ease-in-out, 150ms transform 150ms ease-in-out;
        
     }
     .middle_right div:nth-child(1){
         top: 25%;
+        transition: 150ms top ease-in-out;
     }
     .middle_right div:nth-child(3){
         bottom: 25%;
+        transition: 150ms top ease-in-out;
+    }
+    #hamBtn.active div:nth-child(2){
+        opacity: 0;
+        transition: 200ms opacity ease-in-out 200ms;
+    }
+    #hamBtn.active div:nth-child(1){
+        top: 50%;
+        transform: rotate(-45deg);
+        transition: 200ms transform 200ms ease-in-out;
+    }
+    #hamBtn.active div:nth-child(3){
+        top: 50%;
+        transform: rotate(45deg);
+        transition: 200ms transform 200ms ease-in-out;
+    }
+    body.active{
+        height: 100vh;
+        position: fixed;
+        overflow: hidden;
+    }
+    .dropDownMenu.active{
+        height: 90vh;
+        opacity:100%;
+        visibility: visible;
+        clip-path: circle(150vh at 90% -20%);
+       
+    }
+    .dropDownMenu > ul{
+        margin: 0;
+        padding: 0;
     }
 
   

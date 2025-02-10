@@ -39,10 +39,12 @@ document.addEventListener("scroll", () => {
 });
 
 
-const hamburgerBtn = document.getElementById('hamBtn');
-hamburgerBtn.addEventListener("click", toggleHamMenu);
+$(".hamBtn").on("click", toggleHamMenu);
 function toggleHamMenu(){
-    console.log("Hamburger Button Pressed");
+    $("#hamBtn").toggleClass("active");
+    $(".dropDownMenu").toggleClass("active")
+    $("body").toggleClass("active");
+
 }
 
 

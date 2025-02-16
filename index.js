@@ -48,6 +48,8 @@ function toggleHamMenu(){
 }
 
 
+
+
 //Search By Change
 let searchBySelect = document.getElementById('searchBy');
 let searchByLicenseDiv = document.getElementById('formSearchByLicense');

@@ -200,13 +200,14 @@ a.phoneNumber{
     box-shadow: 10px 0px 0px hsla(0, 0, 0, .3);
     background-color: white;
     padding: 0px 50px;
+   
   
 }
 .bottom_nav{
     width: 100%;
     height: 10vh;
     grid-column: span 12;
-
+    position: relative;
 
 }
 .bottom_nav ul{
@@ -215,16 +216,18 @@ a.phoneNumber{
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 50px;
     height: 100%;
+    gap: 50px;
    
 }
-.bottom_nav ul > a{
+.bottom_nav ul > div > a{
     text-decoration: none;
     color: var(--secondary-gray);
     transition: 150ms color ease-in-out, 150ms cursor ease-in-out;
+    padding: 25px 0px;
 }
-.bottom_nav ul > a:hover{
+
+.bottom_nav ul div > a:hover{
     color: var(--primary-red)
 }
 main{
@@ -233,18 +236,174 @@ main{
 }
 
 .dropDownMenu{
-    background-color: hsl(210, 24%, 16%);
+    background-color: var(--light-gray);
     height: 0;
     opacity: 0;
     visibility: hidden;
-    clip-path: circle(10px at 100% -20%);
-   
     transition: all 1s ease-in-out;
     position: absolute;
+    right: 0;
     z-index: 10;
+    width: 100%;
+    display: flex;
+    padding: 10px 16px;
+ 
+}
+.dropDownMenu > ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+  
+    
+   
 }
 .hero{
     height: 100vh;
+}
+#shop_tires_dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#shop_tires_dropdown > ul{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: var(--secondary-gray);
+    border-radius: 5px;
+    gap: 0;
+    height: fit-content;
+ 
+}
+#shop_tires_dropdown > ul > a{
+    text-decoration: none;
+    color: var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    border-bottom: 1.5px solid var(--light-gray);
+    padding: 10px;
+    
+}
+.fa-arrow-right{
+    background-color: var(--dark-red);
+    border-radius: 50%;
+    /* border: 2px solid var(--primary-red); */
+    padding: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    box-shadow: 10px 2px 0px hsl(0, 0, 0);
+    color:var(--light-gray)
+}
+
+#service_dropdown{
+    display: flex;
+    gap: 50px
+}
+
+#service_dropdown > div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+
+}
+
+#service_dropdown > div > ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+}
+#service_dropdown > div > ul > a > span{
+    color:var(--primary-red)
+}
+#service_dropdown > div > ul > a{
+    text-decoration: none;
+    color: var(--primary-dark-gray);
+}
+#service_dropdown > div > span{
+    font-weight: 700;
+}
+
+
+
+
+#service_dropdown, #shop_tires_dropdown{
+    position: absolute;
+    top: 100%;
+    visibility: hidden;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    padding: 25px;
+    height: fit-content;
+}
+#shop_tires_nav, #services_nav{
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+#shop_tires_nav:hover #shop_tires_dropdown {
+    visibility: visible;
+}
+#services_nav:hover #service_dropdown{
+    visibility: visible;
+}
+
+.addIcon{
+    width: 15px;
+    height: 15px;
+    position: relative;
+}
+.addIcon1{
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-dark-gray);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+.addIcon2{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-dark-gray);
+    transform:translate(-50%, -50%) rotate(90deg);
+    top: 50%;
+    left: 50%;
+
+}
+.dropDownMenu > ul > div{
+    width: 100%;
+}
+
+#dropdownMenu_ShopTires_nav, #dropdownMenu_Services_nav{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#dropdownMenu_ShopTires_dropdown{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 @media (max-width: 500px){
@@ -267,7 +426,7 @@ main{
     }
     .middle_right{
         grid-column: 4;
-        justify-content: center;
+        justify-content: end;
         display: flex;
         color:var(--primary-dark-gray);
         cursor: pointer;
@@ -316,16 +475,13 @@ main{
         overflow: hidden;
     }
     .dropDownMenu.active{
-        height: 90vh;
-        opacity:100%;
+        height: 100vh;
+        opacity: 100%;
         visibility: visible;
-        clip-path: circle(150vh at 90% -20%);
+     
        
     }
-    .dropDownMenu > ul{
-        margin: 0;
-        padding: 0;
-    }
+  
 
   
 }

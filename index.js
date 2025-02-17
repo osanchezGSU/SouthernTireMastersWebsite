@@ -47,6 +47,28 @@ function toggleHamMenu(){
 
 }
 
+$("#dropdownMenu_ShopTires_nav").on("click", toggleShopTireDropDown);
+function toggleShopTireDropDown(){
+    if($("#dropdownMenu_Services_dropdown").hasClass("active")){
+        $("#dropdownMenu_Services_dropdown").toggleClass("active");
+        $(".addIcon4").toggleClass("active");
+    }
+
+    $("#dropdownMenu_ShopTires_dropdown").toggleClass("active");
+    $(".addIcon2").toggleClass("active");
+    
+}
+
+$("#dropdownMenu_Services_nav").on("click", toggleServicesDropDown);
+function toggleServicesDropDown(){
+    if($("#dropdownMenu_ShopTires_dropdown").hasClass("active")){
+        $("#dropdownMenu_ShopTires_dropdown").toggleClass("active");
+        $(".addIcon2").toggleClass("active");
+    }
+    $("#dropdownMenu_Services_dropdown").toggleClass("active");
+    $(".addIcon4").toggleClass("active");
+    
+}
 
 
 

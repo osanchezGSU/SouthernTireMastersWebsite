@@ -240,13 +240,14 @@ main{
     height: 0;
     opacity: 0;
     visibility: hidden;
-    transition: all 1s ease-in-out;
+  
     position: absolute;
     right: 0;
     z-index: 10;
     width: 100%;
     display: flex;
     padding: 10px 0px;
+ 
  
 }
 .dropDownMenu > ul{
@@ -258,13 +259,9 @@ main{
     font-size: 22px;
     margin: 0;
     padding: 0;
-  
-    
-   
 }
-.hero{
-    height: 100vh;
-}
+
+
 #shop_tires_dropdown{
     display: flex;
     flex-direction: column;
@@ -300,7 +297,7 @@ main{
     height: 20px;
     font-weight: 600;
     box-shadow: 10px 2px 0px hsl(0, 0, 0);
-    color:var(--light-gray);
+    color:var(--light-3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -374,7 +371,7 @@ main{
     position: relative;
     cursor:pointer;
 }
-.addIcon1, .addIcon3{
+.addIcon1, .addIcon3, .addIcon5, .addIcon7{
     width: 100%;
     height: 2px;
     background-color: var(--primary-dark-gray);
@@ -383,7 +380,7 @@ main{
     top: 50%;
     left: 50%;
 }
-.addIcon2, .addIcon4{
+.addIcon2, .addIcon4, .addIcon6, .addIcon8{
     position: absolute;
     width: 100%;
     height: 2px;
@@ -392,7 +389,7 @@ main{
     top: 50%;
     left: 50%;
 }
-.addIcon2.active, .addIcon4.active{
+.addIcon2.active, .addIcon4.active, .addIcon6.active, .addIcon8.active{
     display: none;
 }
 
@@ -441,6 +438,213 @@ main{
     color: var(--light-gray);
     text-decoration: none;
 }
+#dropdownMenu_Services_nav_automotiveservices_nav, #dropdownMenu_Services_nav_tireservices_nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between ;
+    padding: 10px 0px;
+    align-items: center;
+    cursor: pointer;
+
+}
+#dropdownMenu_Services_nav_automotiveservices, #dropdownMenu_Services_nav_tireservices{
+    width: 100%
+}
+#dropdownMenu_Services_nav_options.tires, #dropdownMenu_Services_nav_options.automotive{
+    width: 100%;
+    display: none;
+}
+#dropdownMenu_Services_nav_options.tires.active, #dropdownMenu_Services_nav_options.automotive.active{
+    display: flex;
+}
+
+#dropdownMenu_Services_nav_options > ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#dropdownMenu_Services_nav_options > ul > a{
+    text-decoration: none;
+    color: var(--primary-dark-gray);
+    padding: 5px 0px
+}
+#dropdownMenu_Services_nav_options > ul > a > span{
+    color: var(--primary-red);
+}
+.dropDownMenu > ul > div > a{
+    text-decoration: none;
+    color: var(--primary-dark-gray);
+}
+
+/* Hero Css */
+.hero{
+    height: 90vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0;
+    padding: 0;
+
+}
+.hero_content{
+    grid-column: 2 / 8;
+    grid-row: 1;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+.hero_socialproof{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.ratingsStars{
+    display: flex;
+    align-items: center;
+}
+.rating{
+    font-size: 18px;
+}
+.hero > img {
+   position: absolute;
+   width: 50%;
+   right: 0;
+   bottom: 0;
+   z-index: -1;
+}
+.hero_socialproof{
+    display: flex;
+}
+.ratingsStars > i{
+    line-height: 17px;
+    color: #E9E217;
+    font-size: 12px;
+    align-items: center;
+}
+.hero_headline{
+    font-size: 60px;
+    font-weight: 700;
+}
+.hero_headline > span{
+    color: var(--primary-red);
+}
+.hero_description{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--secondary-gray);
+    max-width: 75%;
+}
+.hero_buttons{
+    margin: 20px 0px;
+    display: flex;
+    gap: 20px;
+    
+}
+
+a.primary_button{
+    padding: 5px 20px;
+    background-color: var(--primary-red);
+    color: var(--light-gray);
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+    align-self: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 2px rgb(0, 0, 0, .10),
+    inset 0px 2px var(--light-red);
+
+}
+
+a.secondary_button{
+    padding: 5px 20px;
+    color: var(--light-red);
+    border: 2px solid var(--light-red);
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    align-self: center;
+    max-width: min-content;
+
+    text-align: center;
+}
+.benefits{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr 10fr;
+    gap:24px;
+    margin: 0px 113px;
+
+    padding-top: 50px;
+}
+.benefit_container{
+    grid-column: span 12;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.red_card{
+    max-width: calc((100% - 100px) / 3);
+    background-color: var(--dark-red);
+    border-radius: 10px;
+}
+.benefit_card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--light-gray);
+    background-color: var(--primary-dark-gray);
+    border-radius: 10px;
+    padding: 25px;
+    gap: 20px;
+    cursor: pointer;
+    height: 100%;
+    transition: all ease-in-out 200ms;
+}
+.red_card:hover > div{
+    transform: translate(-5%, -5%);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, .10);
+}
+
+
+.red_card:hover  i {
+    background-color: var(--dark-red);
+}
+.benefit_card > i {
+    font-size: 42px;
+    width: 80px;
+    height: 80px;
+    background-color: var(--light-red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    transition: all ease-in-out 200ms;
+
+}
+.benefit_title{
+    font-size: 30px;
+    height: min-content;
+    font-weight: 700;
+    height: 90px;
+}
+.benefit_description{
+    font-size: 22px;
+    font-weight: 400;
+}
+
+span.section_title{
+    grid-column: span 12;
+    color: var(--secondary-gray);
+    font-size: 30px;
+}
+
 
 @media (max-width: 500px){
     .subheader-bottom, .subheader-top, .middle_middle{
@@ -511,12 +715,143 @@ main{
         overflow: hidden;
     }
     .dropDownMenu.active{
-        height: 100vh;
+        height: 90vh;
         opacity: 100%;
         visibility: visible;
-     
+        overflow-y: scroll;
        
     }
+    /* Hero Css */
+    .hero{ 
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .hero_content{
+        grid-column: span 4;
+        padding: 0px 16px;
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        justify-content: start;
+        margin-top: 35%
+    }
+
+.hero_socialproof{
+   font-size: 12px;
+}
+.ratingsStars{
+    display: flex;
+    align-items: center;
+
+}
+.rating{
+    font-size: 18px;
+}
+.ratingsStars > i{
+    font-size: 10px;
+}
+.hero > img {
+   width: 100%;
+   bottom: 0;
+   z-index: -1;
+}
+
+.hero_headline{
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+.hero_description{
+    font-size: 22px;
+    font-weight: 400;
+    max-width: 100%;
+    text-align: center;
+}
+.hero_buttons{
+    height: 50px;
+    width: 75%;
+}
+a.primary_button{
+    font-size: 22px;
+    border-radius: 100px;
+    height: 100%;
+    width: 100%;
+}
+
+.benefits{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:10px;
+    margin: 0px 16px;
+}
+.benefit_container{
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+.red_card{
+    max-width: 100%;
+    background-color: var(--dark-red);
+    border-radius: 10px;
+}
+.benefit_card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--light-gray);
+    background-color: var(--primary-dark-gray);
+    border-radius: 10px;
+    padding: 25px;
+    gap: 20px;
+    cursor: pointer;
+    height: 100%;
+    transition: all ease-in-out 200ms;
+}
+.red_card:hover > div{
+    transform: translate(-5%, -5%);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, .10);
+}
+
+
+.benefit_card:hover > i {
+    background-color: var(--dark-red);
+}
+.benefit_card > i {
+    font-size: 42px;
+    width: 80px;
+    height: 80px;
+    background-color: var(--light-red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    transition: all ease-in-out 200ms;
+
+}
+.benefit_title{
+    font-size: 30px;
+    height: min-content;
+    font-weight: 700;
+    height: 90px;
+}
+.benefit_description{
+    font-size: 22px;
+    font-weight: 400;
+}
+
+span.section_title{
+    grid-column: span 12;
+    color: var(--secondary-gray);
+    font-size: 30px;
+}
+
   
 
   

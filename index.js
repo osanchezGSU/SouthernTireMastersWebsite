@@ -2,6 +2,7 @@
 $(document).ready(function(){
     $('.search_select_box select').selectpicker();
 })
+checkWidth();
 
 //Lenis Scrolling
 const lenis = new Lenis({
@@ -44,6 +45,10 @@ function toggleHamMenu(){
     $("#hamBtn").toggleClass("active");
     $(".dropDownMenu").toggleClass("active")
     $("body").toggleClass("active");
+    $("#dropdownMenu_Services_dropdown").removeClass("active");
+    $(".addIcon4").removeClass("active");
+    $("#dropdownMenu_ShopTires_dropdown").removeClass("active");
+    $(".addIcon2").removeClass("active");
 
 }
 
@@ -68,6 +73,31 @@ function toggleServicesDropDown(){
     $("#dropdownMenu_Services_dropdown").toggleClass("active");
     $(".addIcon4").toggleClass("active");
     
+}
+
+$("#dropdownMenu_Services_nav_tireservices_nav").on("click", toggleTireServicesDropdown);
+function toggleTireServicesDropdown() {
+    if($("#dropdownMenu_Services_nav_options.automotive").hasClass("active")){
+        $("#dropdownMenu_Services_nav_options.automotive").toggleClass("active");
+    $(".addIcon8").toggleClass("active");
+    }
+    
+    $("#dropdownMenu_Services_nav_options.tires").toggleClass("active");
+    $(".addIcon6").toggleClass("active");
+    
+
+    
+}
+$("#dropdownMenu_Services_nav_automotiveservices_nav").on("click", toggleAutomotiveServicesDropdown);
+function toggleAutomotiveServicesDropdown() {
+
+    if($("#dropdownMenu_Services_nav_options.tires").hasClass("active")){
+        $("#dropdownMenu_Services_nav_options.tires").toggleClass("active");
+    $(".addIcon6").toggleClass("active");
+    }
+
+    $("#dropdownMenu_Services_nav_options.automotive").toggleClass("active");
+    $(".addIcon8").toggleClass("active");
 }
 
 
@@ -238,4 +268,24 @@ document.querySelector("form").onsubmit = function (e) {
     window.location.href = redirectUrl; // Redirect user
 };
 
-//Search By Tire Size
+//Media Query
+function checkWidth() {
+    var windowWidth = $(window).width();
+    if (windowWidth <= 500) {
+      $("#hero_description").html(`Ensuring your vehicle’s safety.`);
+      $("#hero_headline").html(`Experts in <span>tire, alignment, and brake services</span>.`)
+      $("#hero_buttons").html(`<a href="" class="primary_button">Shop Tires</a>`)
+    } else {
+        $("#hero_description").html(`We offer comprehensive services to ensure your vehicle stays safe, reliable, and ready for the road.`);
+        $("#hero_headline").html(`Expert <span>tire, alignment, and brake services</span> all in <span>one place</span>.`)
+        $("#hero_buttons").html(`<a href="" class="primary_button">Shop Tires</a>
+                    <a href="" class="secondary_button">Make An Appointment</a>`)
+    }
+  }
+
+  // Initial check on page load
+  checkWidth();
+
+  // Listen for window resize events
+  $(window).on('resize', checkWidth);
+

@@ -482,14 +482,12 @@ main{
 .hero{
     height: 90vh;
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
     margin: 0;
     padding: 0;
 
 }
 .hero_content{
-    grid-column: 2 / 8;
+    grid-column: span 8;
     grid-row: 1;
     align-self: center;
     display: flex;
@@ -580,13 +578,14 @@ a.secondary_button{
     padding-top: 50px;
 }
 
-.benefits, .shop_tires_container{
+
+.benefits, .shop_tires_container, .hero_div{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap:24px;
     margin: 0px 113px;
     max-width: 1200px;
-
+    height: 100%;
 
 }
 .benefit_container{
@@ -761,6 +760,7 @@ span.section_title{
         align-items: center;
         justify-content: start;
         margin-top: 35%
+
     }
 
 .hero_socialproof{

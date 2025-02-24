@@ -110,13 +110,23 @@ function populateLicenseForm(){
     console.log("Event Triggered ",searchBySelect.value)
     if(searchBySelect.value == "license"){
         fetchStates();
-        searchByLicenseDiv.style.display = "block";
+        $("#states").attr("required", true)
+        $("#licensePlate").attr("required", true)
+        $("#widths").attr("required", false)
+        $("#profiles").attr("required", false)
+        $("#wheelSizees").attr("required", false)
+        searchByLicenseDiv.style.display = "grid";
         searchByTireSizeDiv.style.display = "none";
         
     }
     else{
+        $("#widths").attr("required", true)
+        $("#profiles").attr("required", true)
+        $("#wheelSizees").attr("required", true)
+        $("#states").attr("required", false)
+        $("#licensePlate").attr("required", false)
         searchByLicenseDiv.style.display = "none";
-        searchByTireSizeDiv.style.display = "block";
+        searchByTireSizeDiv.style.display = "grid";
     }
 }
 searchBySelect.addEventListener('change', populateLicenseForm)
@@ -246,6 +256,7 @@ document.querySelector("form").onsubmit = function (e) {
 
 
     if(searchBySelect.value == "license"){
+       
         let state = this.states.value.trim(); // Get and sanitize the state value
         let licensePlate = this.licensePlate.value;
         
@@ -255,6 +266,7 @@ document.querySelector("form").onsubmit = function (e) {
         }
         url = `#!search?license=${licensePlate}&license_ready=true&state=${state}&location_id=23406&search_by=license`;
     } else{
+       
         let widthSize = widthSelect.value;
         let profileSize = profileSelect.value;
         let wheelSize = wheelSizeSelect.value;

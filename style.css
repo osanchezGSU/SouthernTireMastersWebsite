@@ -580,14 +580,14 @@ a.secondary_button{
 }
 
 
-.benefits, .shop_tires_container, .hero_div, .shop_tires_container{
+.benefits, .hero_div, .shop_tires_container{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap:24px;
     margin: 0px 113px;
     max-width: 1200px;
     height: 100%;
-
+    width: 100%
 }
 .benefit_container{
     grid-column: span 12;
@@ -660,7 +660,10 @@ span.section_title{
     width: 100%;
     background-repeat: no-repeat;
     background-size:cover;
-    margin-top:50px
+    margin-top:50px;
+    display: flex;
+    justify-content: center;
+ 
 }
 .shop_tires_container  form{
     grid-column: 6 / -1;
@@ -676,9 +679,8 @@ span.section_title{
     background-color: hsla(0, 0%, 100%, .9);
     display: flex;
     flex-direction: column ;
-
     padding: 50px;
-
+    padding-top: 25%;
     
 }
 .shop_tires_subtitle{
@@ -688,23 +690,78 @@ span.section_title{
 .searchBy{
     margin-bottom: 20px;
     border-radius: 20px !important;
-    margin-top: 30px;
+    margin-top: 30px;   
+    width: 183.33px !important;
 }
-.searchBy button{
+.searchBy button, .widths button, .profiles button, .wheelSizes button, .states button{
     background: var(--primary-dark-gray) !important;
-    color: var(--deselectedSelect) !important;
+    color: var(--light-gray) !important;
     width: 100%
 }
-.formSearchByTireSize{
+
+.formSearchByTireSize, .formSearchByLicense{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    width: 100%;
+    justify-content: end;
 }
+
 .search_select_box > button{
     margin-top: 20px;
 }
+.input_div{
+    position: relative;
+    font-size: 16px;
+    grid-column: 2 / -1;
+    width: 100%;
+}
+.input_div input{
+    border-radius: 5px;
+    appearance: none;
+    outline: none;
+    height: 100%;
+    border: none;
+    padding-left: 12px;
+    background-color: var(--primary-dark-gray);
+    color: var(--light-gray);
+    
+}
 
+.input_div .placeholder{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--deselectedSelect);
+    pointer-events: none;
+    transition: 200ms color ease, 200ms top ease, 200ms font-size ease;
+}
 
+.input_div input:focus {
+    border: 2px solid var(--light-gray);
+}
+.input_div input:focus + .placeholder, .input_div input:valid + .placeholder{
+    top: 0%;
+    transform: translateY(-100%);
+    font-size: 14px;
+    color: var(--primary-dark-gray);
+
+} 
+.search_button{
+    background-color: var(--primary-red);
+    width: fit-content;
+    color: var(--light-gray);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown:has(.widths), .dropdown:has(.profiles), .dropdown:has(.wheelSizes), .dropdown:has(.states){
+    width: 100% !important;
+} 
+.services{
+    height: 100vh;
+}
 
 @media (max-width: 500px){
     .subheader-bottom, .subheader-top, .middle_middle{

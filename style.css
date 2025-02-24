@@ -485,6 +485,11 @@ main{
     position: relative;
     margin: 0;
     padding: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex
+
 
 }
 .hero_content{

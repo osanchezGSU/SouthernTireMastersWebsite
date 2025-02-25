@@ -115,7 +115,7 @@ function populateLicenseForm(){
         $("#widths").attr("required", false)
         $("#profiles").attr("required", false)
         $("#wheelSizees").attr("required", false)
-        searchByLicenseDiv.style.display = "grid";
+        searchByLicenseDiv.style.display = "flex";
         searchByTireSizeDiv.style.display = "none";
         
     }
@@ -126,7 +126,7 @@ function populateLicenseForm(){
         $("#states").attr("required", false)
         $("#licensePlate").attr("required", false)
         searchByLicenseDiv.style.display = "none";
-        searchByTireSizeDiv.style.display = "grid";
+        searchByTireSizeDiv.style.display = "flex";
     }
 }
 searchBySelect.addEventListener('change', populateLicenseForm)
@@ -301,3 +301,4 @@ function checkWidth() {
   // Listen for window resize events
   $(window).on('resize', checkWidth);
 
+//   $(".dropdown").removeClass("dropup");

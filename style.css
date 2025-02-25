@@ -705,8 +705,7 @@ span.section_title{
 }
 
 .formSearchByTireSize, .formSearchByLicense{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 20px;
     width: 100%;
     justify-content: end;
@@ -718,7 +717,6 @@ span.section_title{
 .input_div{
     position: relative;
     font-size: 16px;
-    grid-column: 2 / -1;
     width: 100%;
 }
 .input_div input{
@@ -760,6 +758,7 @@ span.section_title{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    padding: 5px 20px;
 }
 .dropdown:has(.widths), .dropdown:has(.profiles), .dropdown:has(.wheelSizes), .dropdown:has(.states){
     width: 100% !important;
@@ -767,6 +766,22 @@ span.section_title{
 .services{
     height: 100vh;
 }
+.dropdown-menu.show{
+    transform:translate3d(0px, 40px, 0px) !important;
+    max-height: 200px !important;
+    overflow: auto !important;
+}
+.dropdown-menu.inner{
+    transform:translate3d(0px, 0px, 0px) !important;
+    max-height: calc(200px - 46px) !important;
+    overflow: scroll !important;
+} 
+div.inner.show {
+    max-height: calc(200px - 46px) !important;
+    overflow: scroll !important;
+
+}
+
 
 @media (max-width: 500px){
     .subheader-bottom, .subheader-top, .middle_middle{
@@ -904,12 +919,14 @@ a.primary_button{
     width: 100%;
 }
 
-.benefits{
+.benefits, .hero_div, .shop_tires_container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
     gap:10px;
-    margin: 0px 16px;
+    margin: 0px 0px;
+
+    padding: 0px 16px;
 }
 .benefit_container{
     grid-column: span 4;
@@ -971,9 +988,42 @@ a.primary_button{
 span.section_title{
     grid-column: span 4;
     font-size: 24px;
+    text-align: center;
+}
+.shop_tires{
+    height: 100vh;
+}
+.shop_tires_container  form{
+    grid-column: span 4;
+
+}
+span.shop_tires_subtitle{
+    text-align: center;
+    font-size: 30px;
+    max-width: 300px;
+}
+.search_select_box{
+    padding: 15px;
+    /* padding-top: 50%; */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.formSearchByTireSize, .formSearchByLicense{
+
+    flex-direction: column;
+    max-width: 183.33px ;
 }
 
-  
-
-  
+.input_div{
+    height: 38px;
+    max-width: 183.33px;
+    margin-top: 10px;
+}
+.input_div input{
+    width: 100%;
+}
+.benefits{
+    margin-top: 50px;
+}
 }

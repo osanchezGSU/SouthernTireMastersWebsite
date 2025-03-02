@@ -302,3 +302,39 @@ function checkWidth() {
   $(window).on('resize', checkWidth);
 
 //   $(".dropdown").removeClass("dropup");
+
+//Service Selector Script
+
+
+$(".service_selector_option").on("click", function (event){
+    console.log(event.currentTarget)
+   
+    if(event.currentTarget.classList.contains("automotive")){
+        $(event.currentTarget).addClass("selected");
+        $(".service_selector_option.tire").removeClass("selected");
+        $(".service_card_container.tire").remove("active");
+        $(".service_card_container.automotive").addClass("active");
+     
+    }else{
+        $(".service_selector_option.tire").addClass("selected");
+        $(".service_selector_option.automotive").removeClass("selected");
+        $(".service_card_container.automotive").remove("active");
+        $(".service_card_container.tire").addClass("active");
+    }
+})
+
+
+
+$(".service_card").hover(
+    function(event) {
+        $(this).find(".desktop_label").fadeTo(0, 0.0); // Fade out the span
+        $(this).find(".service_card_content_text").fadeTo(0, 1.0); // Fade in the content text
+    },
+    function(event) {
+        $(this).find(".desktop_label").fadeTo(0, 1.0); // Fade the span back in
+        $(this).find(".service_card_content_text").fadeTo(0, 0.0); // Fade the content text back out
+    }
+);
+
+
+

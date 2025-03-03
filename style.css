@@ -237,6 +237,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* overflow-x: hidden; */
 }
 
 .dropDownMenu{
@@ -809,7 +810,6 @@ div.inner.show {
     padding: 2px;
     background-color: var(--light-gray);
     
-    
 }
 .service_selector > div{
     padding-right: 5px;
@@ -817,8 +817,8 @@ div.inner.show {
     transition: 200ms color ease-in-out, 200ms background-color ease-in-out;
     padding: 10px;
     border-radius: 9999px;
-
 }
+
 .service_selector > div.selected{
     color: var(--light-gray);
     background-color: var(--primary-red);
@@ -838,7 +838,7 @@ div.inner.show {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    overflow: hidden;
 }
 
 .service_card > img{
@@ -907,7 +907,14 @@ div.inner.show {
 }
 
 
-
+.swiper {
+    grid-column: span 4;
+    width: 100%;
+    height: 400px;
+  }
+  .swiper-slide{
+    height: 366px !important;
+  }
 
 
 
@@ -999,159 +1006,180 @@ div.inner.show {
         height: 100%;
         align-items: center;
         justify-content: start;
-        margin-top: 35%
-
+        padding-top: 35%
     }
 
-.hero_socialproof{
-   font-size: 12px;
-}
-.ratingsStars{
-    display: flex;
-    align-items: center;
+    .hero_socialproof{
+    font-size: 12px;
+    }
+    .ratingsStars{
+        display: flex;
+        align-items: center;
 
-}
-.rating{
-    font-size: 18px;
-}
-.ratingsStars > i{
-    font-size: 10px;
-}
-.hero > img {
-   width: 100%;
-   bottom: 0;
-   z-index: -1;
-}
-
-.hero_headline{
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-    margin: 0;
-}
-
-.hero_description{
-    font-size: 22px;
-    font-weight: 400;
-    max-width: 100%;
-    text-align: center;
-}
-.hero_buttons{
-    height: 50px;
-    width: 75%;
-}
-a.primary_button{
-    font-size: 22px;
-    border-radius: 100px;
-    height: 100%;
+    }
+    .rating{
+        font-size: 18px;
+    }
+    .ratingsStars > i{
+        font-size: 10px;
+    }
+    .hero > img {
     width: 100%;
-}
+    bottom: 0;
+    z-index: -1;
+    }
 
-.benefits, .hero_div, .shop_tires_container, .services{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    gap:10px;
-    margin: 0px 0px;
+    .hero_headline{
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0;
+    }
 
-    padding: 0px 16px;
-}
-.benefit_container{
-    grid-column: span 4;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-}
-.red_card{
-    max-width: 100%;
-    background-color: var(--dark-red);
-    border-radius: 10px;
-}
-.benefit_card {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: var(--light-gray);
-    background-color: var(--primary-dark-gray);
-    border-radius: 10px;
-    padding: 25px;
-    gap: 20px;
-    cursor: pointer;
-    height: 100%;
-    transition: all ease-in-out 200ms;
-}
-.red_card:hover > div{
-    transform: translate(0, 0);
-    box-shadow: 5px 5px 2px rgba(0, 0, 0, .10);
-}
+    .hero_description{
+        font-size: 22px;
+        font-weight: 400;
+        max-width: 100%;
+        text-align: center;
+    }
+    .hero_buttons{
+        height: 50px;
+        width: 75%;
+    }
+    a.primary_button{
+        font-size: 22px;
+        border-radius: 100px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .benefits, .hero_div, .shop_tires_container, .services{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        gap:10px;
+        margin: 0px 0px;
+
+        padding: 0px 16px;
+    }
+    .benefit_container{
+        grid-column: span 4;
+        display: flex;
+        justify-content: space-between;
+        gap: 0;
+    }
+    .red_card{
+        max-width: 100%;
+        background-color: var(--dark-red);
+        border-radius: 10px;
+        height: 366px;
+    }
+    .benefit_card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: var(--light-gray);
+        background-color: var(--primary-dark-gray);
+        border-radius: 10px;
+        padding: 25px;
+        gap: 20px;
+        cursor: pointer;
+        height: 100%;
+        transition: all ease-in-out 200ms;
+    }
+    .red_card:hover > div{
+        transform: translate(0, 0);
+        box-shadow: 5px 5px 2px rgba(0, 0, 0, .10);
+    }
 
 
-.benefit_card:hover > i {
-    background-color: var(--dark-red);
-}
-.benefit_card > i {
-    font-size: 42px;
-    width: 80px;
-    height: 80px;
-    background-color: var(--light-red);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    transition: all ease-in-out 200ms;
+    .benefit_card:hover > i {
+        background-color: var(--dark-red);
+    }
+    .benefit_card > i {
+        font-size: 42px;
+        width: 80px;
+        height: 80px;
+        background-color: var(--light-red);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        transition: all ease-in-out 200ms;
 
-}
-.benefit_title {
-    font-size: 24px;
-    height: min-content;
+    }
+    .benefit_title {
+        font-size: 24px;
+        height: min-content;
 
-}
-.benefit_description{
-    font-size: 18px;
-}
+    }
+    .benefit_description{
+        font-size: 18px;
+    }
 
-span.section_title{
-    grid-column: span 4;
-    font-size: 24px;
-    text-align: center;
-}
-.shop_tires{
-    height: 100vh;
-}
-.shop_tires_container  form{
-    grid-column: span 4;
+    span.section_title{
+        grid-column: span 4;
+        font-size: 24px;
+        text-align: center;
+    }
+    .shop_tires{
+        height: 100vh;
+    }
+    .shop_tires_container  form{
+        grid-column: span 4;
 
-}
-span.shop_tires_subtitle{
-    text-align: center;
-    font-size: 30px;
-    max-width: 300px;
-}
-.search_select_box{
-    padding: 15px;
-    /* padding-top: 50%; */
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-.formSearchByTireSize, .formSearchByLicense{
+    }
+    span.shop_tires_subtitle{
+        text-align: center;
+        font-size: 30px;
+        max-width: 300px;
+    }
+    .search_select_box{
+        padding: 15px;
+        /* padding-top: 50%; */
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .formSearchByTireSize, .formSearchByLicense{
 
-    flex-direction: column;
-    max-width: 183.33px ;
-}
+        flex-direction: column;
+        max-width: 183.33px ;
+    }
 
-.input_div{
-    height: 38px;
-    max-width: 183.33px;
-    margin-top: 10px;
-}
-.input_div input{
-    width: 100%;
-}
-.benefits{
-    margin-top: 50px;
-}
+    .input_div{
+        height: 38px;
+        max-width: 183.33px;
+        margin-top: 10px;
+    }
+    .input_div input{
+        width: 100%;
+    }
+    .benefits, .services{
+        padding-top: 50px;
+    }
+    .services{
+        height: 100vh;
+    }
+    .service_selector_container{
+        grid-column: span 4;
+        grid-row: 2;
+    }
+    .service_card_container.active{
+        /* display: flex; */
+        grid-column: span 4;
+        overflow-x: scroll;
+        width: fit-content;
+        gap: 0;
+        margin-top: 50px;
+        display: flex;
+    }
+    .service_card{
+        width: 100%;
+    }
+ 
+
+    
 }

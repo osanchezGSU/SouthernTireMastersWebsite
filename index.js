@@ -282,11 +282,17 @@ document.querySelector("form").onsubmit = function (e) {
 
 //Media Query
 function checkWidth() {
+    const parentContainer = document.querySelector('.benefits');
+    const parentServiceContainer = document.querySelector('.services');
     var windowWidth = $(window).width();
     if (windowWidth <= 500) {
       $("#hero_description").html(`Ensuring your vehicle’s safety.`);
       $("#hero_headline").html(`Experts in <span>tire, alignment, and brake services</span>.`)
       $("#hero_buttons").html(`<a href="" class="primary_button">Shop Tires</a>`)
+      if (!parentContainer.querySelector('.swiper') && !parentServiceContainer.querySelector('.swiper')) {
+        applySwiperToBenefits();
+        // applySwiperToServices();
+    } 
     } else {
         $("#hero_description").html(`We offer comprehensive services to ensure your vehicle stays safe, reliable, and ready for the road.`);
         $("#hero_headline").html(`Expert <span>tire, alignment, and brake services</span> all in <span>one place</span>.`)
@@ -294,12 +300,62 @@ function checkWidth() {
                     <a href="" class="secondary_button">Make An Appointment</a>`)
     }
   }
+  function applySwiperToBenefits(){
+    const parentContainer = document.querySelector('.benefits');
+    const benefitContainer = document.querySelector('.benefit_container')
+    const wrapper = document.createElement('div');
+        wrapper.classList.add('swiper');
+
+        const pagination = document.createElement('div');
+        pagination.classList.add('swiper-pagination');
+
+        wrapper.appendChild(benefitContainer);
+        wrapper.appendChild(pagination);
+        parentContainer.appendChild(wrapper); // Append at the end instead of insertBefore
+
+        benefitContainer.classList.add("swiper-wrapper");
+
+        document.querySelectorAll(".red_card").forEach(card => {
+            card.classList.add("swiper-slide");
+        });
+  }
+  function applySwiperToServices(){
+    const parentContainer = document.querySelector('.services');
+    const serviceContainers = document.querySelectorAll('.service_card_container')
+    serviceContainers.forEach(container => {
+        if(container.classList.contains("active")){
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('swiper');
+
+            const pagination = document.createElement('div');
+            pagination.classList.add('swiper-pagination');
+        
+
+            wrapper.appendChild(container);
+            wrapper.appendChild(pagination);
+            parentContainer.appendChild(wrapper); // Append at the end instead of insertBefore
+
+            container.classList.add("swiper-wrapper");
+
+            document.querySelectorAll(".service_card").forEach(card => {
+                card.classList.add("swiper-slide");
+            });
+        }
+        else{
+            container.parentNode.removeChild(container);
+          
+        }
+    })
+   
+  }
 
   // Initial check on page load
   checkWidth();
 
   // Listen for window resize events
   $(window).on('resize', checkWidth);
+  $(window).on('load', checkWidth);
+
 
 //   $(".dropdown").removeClass("dropup");
 
@@ -312,13 +368,15 @@ $(".service_selector_option").on("click", function (event){
     if(event.currentTarget.classList.contains("automotive")){
         $(event.currentTarget).addClass("selected");
         $(".service_selector_option.tire").removeClass("selected");
-        $(".service_card_container.tire").remove("active");
+        $(".service_card_container.tire").removeClass("active");
         $(".service_card_container.automotive").addClass("active");
+        // applySwiperToServices();
+   
      
     }else{
         $(".service_selector_option.tire").addClass("selected");
         $(".service_selector_option.automotive").removeClass("selected");
-        $(".service_card_container.automotive").remove("active");
+        $(".service_card_container.automotive").removeClass("active");
         $(".service_card_container.tire").addClass("active");
     }
 })
@@ -329,12 +387,31 @@ $(".service_card").hover(
     function(event) {
         $(this).find(".desktop_label").fadeTo(0, 0.0); // Fade out the span
         $(this).find(".service_card_content_text").fadeTo(0, 1.0); // Fade in the content text
+        $(this).find("img").css('transform', 'scale(1.2)');
     },
     function(event) {
         $(this).find(".desktop_label").fadeTo(0, 1.0); // Fade the span back in
         $(this).find(".service_card_content_text").fadeTo(0, 0.0); // Fade the content text back out
+        $(this).find("img").css('transform', 'scale(1)');
     }
 );
 
+swiper = new Swiper('.swiper', {
 
-
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    spaceBetween: 20,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: 'true',
+      dynamicBullets: 'true'
+    },
+  
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });

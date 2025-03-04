@@ -3,6 +3,9 @@ $(document).ready(function(){
     $('.search_select_box select').selectpicker();
 })
 checkWidth();
+$(window).on('resize', checkWidth);
+$(window).on('load', checkWidth);
+
 
 //Lenis Scrolling
 const lenis = new Lenis({
@@ -289,15 +292,23 @@ function checkWidth() {
       $("#hero_description").html(`Ensuring your vehicle’s safety.`);
       $("#hero_headline").html(`Experts in <span>tire, alignment, and brake services</span>.`)
       $("#hero_buttons").html(`<a href="" class="primary_button">Shop Tires</a>`)
-      if (!parentContainer.querySelector('.swiper') && !parentServiceContainer.querySelector('.swiper')) {
+      if (!parentContainer.querySelector('.swiper')) {
         applySwiperToBenefits();
-        // applySwiperToServices();
     } 
+    if (!parentServiceContainer.querySelector('.swiper')) {
+        applySwiperToServices();
+        
+    } 
+   
+
+
     } else {
         $("#hero_description").html(`We offer comprehensive services to ensure your vehicle stays safe, reliable, and ready for the road.`);
         $("#hero_headline").html(`Expert <span>tire, alignment, and brake services</span> all in <span>one place</span>.`)
         $("#hero_buttons").html(`<a href="" class="primary_button">Shop Tires</a>
                     <a href="" class="secondary_button">Make An Appointment</a>`)
+        removeSwiperfromBenefits();
+        removeSwiperfromServices
     }
   }
   function applySwiperToBenefits(){
@@ -319,42 +330,80 @@ function checkWidth() {
             card.classList.add("swiper-slide");
         });
   }
-  function applySwiperToServices(){
+  function removeSwiperfromBenefits(){
+    const parentContainer = document.querySelector('.benefits');
+    const wrapper = parentContainer.querySelector('.swiper');
+
+    if (wrapper) {
+        const benefitContainer = wrapper.querySelector('.benefit_container');
+        const pagination = wrapper.querySelector('.swiper-pagination');
+
+        // Remove pagination
+        if (pagination) pagination.remove();
+
+        // Move benefitContainer back to parent and remove wrapper
+        if (benefitContainer) {
+            parentContainer.appendChild(benefitContainer);
+            wrapper.remove();
+        }
+
+        // Remove swiper classes
+        benefitContainer.classList.remove("swiper-wrapper");
+        document.querySelectorAll(".red_card").forEach(card => {
+            card.classList.remove("swiper-slide");
+        });
+    }
+  }
+  function removeSwiperfromServices(){
     const parentContainer = document.querySelector('.services');
-    const serviceContainers = document.querySelectorAll('.service_card_container')
-    serviceContainers.forEach(container => {
-        if(container.classList.contains("active")){
-            const wrapper = document.createElement('div');
-            wrapper.classList.add('swiper');
+    const wrappers = parentContainer.querySelectorAll('.swiper');
 
-            const pagination = document.createElement('div');
-            pagination.classList.add('swiper-pagination');
+    if (wrappers) {
+
+        wrappers.forEach(wrapper => {
+            const serviceContainer = wrapper.querySelector('.service_card_container');
+            const pagination = wrapper.querySelector('.swiper-pagination');
+            if (pagination) pagination.remove();
+            if (serviceContainer) {
+                parentContainer.appendChild(serviceContainer);
+            }
+            wrapper.remove();
+            serviceContainer.classList.remove("swiper-wrapper");
+        })
         
-
-            wrapper.appendChild(container);
-            wrapper.appendChild(pagination);
-            parentContainer.appendChild(wrapper); // Append at the end instead of insertBefore
-
-            container.classList.add("swiper-wrapper");
-
-            document.querySelectorAll(".service_card").forEach(card => {
-                card.classList.add("swiper-slide");
-            });
-        }
-        else{
-            container.parentNode.removeChild(container);
-          
-        }
-    })
-   
+    }
+    document.querySelectorAll(".service_card").forEach(card => {
+        card.classList.remove("swiper-slide");
+    });
   }
 
-  // Initial check on page load
-  checkWidth();
 
-  // Listen for window resize events
-  $(window).on('resize', checkWidth);
-  $(window).on('load', checkWidth);
+function applySwiperToServices() {
+    const serviceSection = document.querySelector(".services");
+    const swiper_tire = document.createElement('div');
+    const swiper_automotive = document.createElement('div');
+    serviceSection.appendChild(swiper_tire);
+    serviceSection.appendChild(swiper_automotive);
+    swiper_tire.classList.add('swiper', 'tire', 'active');
+    swiper_automotive.classList.add('swiper', 'automotive');
+
+    const service_card_containers = document.querySelectorAll(".service_card_container");
+    service_card_containers.forEach(container => {
+        container.classList.add("swiper-wrapper")
+        const cards = container.querySelectorAll(".service_card");
+        cards.forEach(card => {
+            card.classList.add("swiper-slide");
+        });
+        if (container === service_card_containers[0]){
+            swiper_tire.appendChild(container);
+        }
+        else{
+            swiper_automotive.appendChild(container);
+        }
+    })
+}
+
+
 
 
 //   $(".dropdown").removeClass("dropup");
@@ -370,14 +419,16 @@ $(".service_selector_option").on("click", function (event){
         $(".service_selector_option.tire").removeClass("selected");
         $(".service_card_container.tire").removeClass("active");
         $(".service_card_container.automotive").addClass("active");
-        // applySwiperToServices();
-   
-     
+        $(".swiper.automotive").addClass("active");
+        $(".swiper.tire").removeClass("active");
+
     }else{
         $(".service_selector_option.tire").addClass("selected");
         $(".service_selector_option.automotive").removeClass("selected");
         $(".service_card_container.automotive").removeClass("active");
         $(".service_card_container.tire").addClass("active");
+        $(".swiper.automotive").removeClass("active");
+        $(".swiper.tire").addClass("active");
     }
 })
 

@@ -905,6 +905,12 @@ div.inner.show {
     gap: 10px;
     margin-top: 50px;
 }
+.swiper.tire.active, .swiper.automotive.active{
+    display: grid;
+}
+.swiper.tire, .swiper.automotive{
+    display: none;
+}
 
 
 .swiper {

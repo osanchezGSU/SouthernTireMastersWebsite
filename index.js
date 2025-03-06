@@ -401,6 +401,13 @@ function applySwiperToServices() {
             swiper_automotive.appendChild(container);
         }
     })
+    const pagination1 = document.createElement('div');
+    pagination1.classList.add('swiper-pagination');
+    const pagination2 = document.createElement('div');
+    pagination2.classList.add('swiper-pagination');
+
+    swiper_automotive.appendChild(pagination1);
+    swiper_tire.appendChild(pagination2)
 }
 
 

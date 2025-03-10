@@ -920,10 +920,18 @@ div.inner.show {
 .testimonial > .text_container{
     grid-column: 7 / -1;
     grid-row: 1;
+    padding-top: 20px;
 }
 .reviews_container{
     grid-column: 5 / -1;
     grid-row: 2;
+}
+a.reviewBtn{
+    text-decoration: none;   
+    background-color: var(--primary-red);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: var(--light-gray)
 }
 
 

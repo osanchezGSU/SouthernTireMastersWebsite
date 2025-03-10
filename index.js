@@ -277,7 +277,7 @@ document.querySelector("form").onsubmit = function (e) {
     }
 
 
-    let redirectUrl = `http://127.0.0.1:3002/tires.html${url}`;
+    let redirectUrl = `tires.html${url}`;
 
 
     window.location.href = redirectUrl; // Redirect user

@@ -583,18 +583,18 @@ a.secondary_button{
 
 .benefits{
     grid-template-rows: 1fr 10fr;
-    padding-top: 50px;
 }
 
 
-.benefits, .hero_div, .shop_tires_container, .services{
+.benefits, .hero_div, .shop_tires_container, .services, .testimonial{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap:24px;
     margin: 0px 113px;
     max-width: 1200px;
     height: 100%;
-    width: 100%
+    width: 100%;
+    margin-top: 50px;
 }
 .benefit_container{
     grid-column: span 12;
@@ -787,10 +787,9 @@ div.inner.show {
 
 /*Service Section CSS*/
 .services{
-    margin-top: 50px;
     grid-template-rows: repeat(12, 1fr);
     row-gap: 0;
-    max-height: 85vh;
+    grid-template-rows: auto;
 
 }
 .service_selector_container{
@@ -906,6 +905,26 @@ div.inner.show {
     margin-top: 50px;
 }
 
+/*Testimonial CSS*/
+.testimonial {
+    grid-template-rows: repeat(2, 1fr);
+    height: 85vh;
+}
+.testimonial > img {
+    grid-column: 1 / 7;
+    grid-row: 1 / -1;
+    width: 100%;
+    height: 100%;
+}
+
+.testimonial > .text_container{
+    grid-column: 7 / -1;
+    grid-row: 1;
+}
+.reviews_container{
+    grid-column: 5 / -1;
+    grid-row: 2;
+}
 
 
 @media (max-width: 500px){

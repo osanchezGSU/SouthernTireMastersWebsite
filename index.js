@@ -510,9 +510,7 @@ function checkIfOpen(){
         isOpen = false;
         console.log("date >= 1 || date <= 5 && hour > 17")
     }
-    console.log(date, hour)
-
-    console.log(isOpen);
+  
     return isOpen;
 
 }
@@ -523,10 +521,12 @@ function checkIfOpen(){
   async function initMap() {
 
     var locations = [
-        { name: 'Southern Tire Masters Hampton, GA', lat: 33.412228, lng: -84.314482, address: '550 US-19 #41, Hampton GA 30228', phoneNumber: '(470) 878-6044', arialLabel: "Hampton" },
-        { name: 'Southern Tire Masters Griffin, GA', lat: 33.25656, lng: -84.287647 , address: '536 N Expy, Griffin GA 30223', phoneNumber: '(470) 712-8009', arialLabel: "Griffin"}
+        { name: 'Southern Tire Masters Hampton, GA', lat: 33.412228, lng: -84.314482, address: '550 US-19 #41, Hampton GA 30228', phoneNumber: '(470) 878-6044', id: "Hampton" },
+        { name: 'Southern Tire Masters Griffin, GA', lat: 33.25656, lng: -84.287647 , address: '536 N Expy, Griffin GA 30223', phoneNumber: '(470) 712-8009', id: "Griffin"}
 
     ];
+    const hamptonLocationContainer = document.querySelector("#hampton_location");
+    const griffinLocationContainer = document.querySelector("#griffin_location");
     var activeInfoWindows = [];
     getUserLocation(function(userLocation) {
         if (userLocation) {
@@ -562,6 +562,14 @@ function checkIfOpen(){
                             closestMarker = location;
                             console.log(closestDistance)
                         };
+                        if (location.id === "Hampton"){
+                            const distanceSpan = hamptonLocationContainer.querySelector("span.location_distance");
+                            distanceSpan.innerText = (location.distanceValue)
+                        }
+                        else{
+                            const distanceSpan = griffinLocationContainer.querySelector("span.location_distance");
+                            distanceSpan.innerText = (location.distanceValue);
+                        }
                         
                     } else {
                         alert("Directions request failed due to " + status);
@@ -607,15 +615,17 @@ function checkIfOpen(){
                         </div>
                     </div>
                     `
+                 
                     const infowindow = new google.maps.InfoWindow({
                         content: contentString,
-                        ariaLabel: location.arialLabel,
+                        ariaLabel: location.id,
                       });
                     
                       marker.addListener("gmp-click", () => {
 
                         if(activeInfoWindows){
                             activeInfoWindows.forEach(window => {
+                         
                                 window.close();
                             });
                             activeInfoWindows.pop();
@@ -627,8 +637,8 @@ function checkIfOpen(){
                             anchor: marker,
                             map,
                           });
-                          console.log(infowindow.ariaLabel)
-
+                        
+                          setLocationCardActive(infowindow.ariaLabel)
                           activeInfoWindows.push(infowindow)
                         
                           // Update the current info window to the newly opened one
@@ -636,8 +646,10 @@ function checkIfOpen(){
                       });
                 });
 
-                const locationContainer = document.getElementById("locations_container");
-                
+               
+             
+
+
 
                
                 
@@ -728,3 +740,92 @@ function checkIfOpen(){
 //     }
 }
 window.initMap = initMap;
+
+function setLocationCardActive (selectedCard){
+    if(selectedCard === "Hampton"){
+        $('#griffin_location').removeClass("active")
+        $('#hampton_location').addClass("active")
+       
+    }
+    else{
+        $('#hampton_location').removeClass("active")
+        $('#griffin_location').addClass("active")
+    }
+
+}
+
+function applyHoursOfOperationtext(){
+    var isOpen = checkIfOpen();
+    const now = new Date();
+    const date = now.getDay();
+    const hour = now.getHours();
+    var hoursOfOperationTexts = document.querySelectorAll(".hours_of_operation_text");
+    hoursOfOperationTexts.forEach(hoursOfOperationText => {
+        if(isOpen){
+            if(date === 6){
+                hoursOfOperationText.innerHTML = ("<span>Open</span> unitl 5:00 PM today");
+            }
+            else{
+                hoursOfOperationText.innerHTML = ("<span>Open</span> unitl 6:00 PM today");
+            }
+        }
+        else{
+            switch(date){
+                case 0: 
+                    hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Mon @ 8:00am");
+                    break;
+                case 1: 
+                    if(hour < 7){
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                    } else{
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Tue @ 8:00am");
+                    }
+                    break;
+                case 2: 
+                    if(hour < 7){
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                    } else{
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Wed @ 8:00am");
+                    }
+                    break;
+                case 3: 
+                    if(hour < 7){
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                    } else{
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Thu @ 8:00am");
+                    }
+                    break;
+                case 4: 
+                    if(hour < 7){
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                    } else{
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Fri @ 8:00am");
+                    }
+                    break;
+                case 5: 
+                    if(hour < 7){
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                    } else{
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Sat @ 8:00am");
+                    }
+                    break;
+                case 6: 
+                    if(hour < 7){
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                    } else{
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Mon @ 8:00am");
+                    }
+                    break;
+                default: 
+                    break;
+                
+                
+                
+                
+                    
+                
+            }
+        }
+    })
+}
+applyHoursOfOperationtext();

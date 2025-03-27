@@ -925,6 +925,7 @@ div.inner.show {
 .reviews_container{
     grid-column: 5 / -1;
     grid-row: 2;
+    margin-bottom: 50px;
 }
 a.reviewBtn{
     text-decoration: none;   
@@ -936,7 +937,7 @@ a.reviewBtn{
 
 /*Locations CSS*/
 .locations{
-    height: 85vh;
+    max-height: 85vh;
 }
 #map{
     grid-column: 6 / -1;
@@ -991,7 +992,7 @@ a.reviewBtn{
     padding: 5px 10px;
     font-weight: 500;
 }
-.infoWindowButtons{
+.infoWindowButtons, .location_btns{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -999,7 +1000,7 @@ a.reviewBtn{
     margin-top: 20px;
     align-items: center;
 }
-.infoWindowButtons > a{
+.infoWindowButtons > a, .location_btns > a{
     width: 50%;
     text-align: center;
     padding: 10px 5px;
@@ -1008,14 +1009,50 @@ a.reviewBtn{
     font-weight: 700;
     box-sizing: border-box;
 }
-.infoWindowButtons >  a.primary{
+.infoWindowButtons >  a.primary, .location_btns > a.primary{
     background-color: var(--primary-red);
     color: var(--light-gray);
 
 }
-.infoWindowButtons >  a.secondary{
+.infoWindowButtons >  a.secondary, .location_btns > a.secondary{
     border: 2px solid var(--primary-red);
     color: var(--primary-red);
+}
+.locations_container{
+    grid-column: span 5;
+    display: flex;
+    flex-direction: column;
+}
+.locations_container > span{
+    margin-bottom: 25px;
+    padding-top: 20px;
+}
+.location_card{
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 50px 20px;
+}
+.location_card_header{
+    display: flex;
+    align-items: center;
+    color: var(--primary-red);
+    padding-bottom: 10px;
+}
+.location_card_header > span{
+    font-size: 22px;
+    font-weight: 500;
+}
+.location_btns > a{
+    border-radius: 10px;;
+}
+.location_card.active{
+    border: solid 5px var(--primary-red);
+}
+.location_address{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 

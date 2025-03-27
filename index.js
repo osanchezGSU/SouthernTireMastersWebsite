@@ -772,48 +772,48 @@ function applyHoursOfOperationtext(){
         else{
             switch(date){
                 case 0: 
-                    hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Mon @ 8:00am");
+                    hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Mon @ 8:00am");
                     break;
                 case 1: 
                     if(hour < 7){
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Today @ 8:00am");
                     } else{
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Tue @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Tue @ 8:00am");
                     }
                     break;
                 case 2: 
                     if(hour < 7){
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Today @ 8:00am");
                     } else{
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Wed @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Wed @ 8:00am");
                     }
                     break;
                 case 3: 
                     if(hour < 7){
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Today @ 8:00am");
                     } else{
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Thu @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Thu @ 8:00am");
                     }
                     break;
                 case 4: 
                     if(hour < 7){
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Today @ 8:00am");
                     } else{
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Fri @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Fri @ 8:00am");
                     }
                     break;
                 case 5: 
                     if(hour < 7){
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Today @ 8:00am");
                     } else{
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Sat @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Sat @ 8:00am");
                     }
                     break;
                 case 6: 
                     if(hour < 7){
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Today @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Today @ 8:00am");
                     } else{
-                        hoursOfOperationText.innerHTML=("<span>Closed.</span> We'll Be Open Mon @ 8:00am");
+                        hoursOfOperationText.innerHTML=("<span>Closed.</span> Opens Mon @ 8:00am");
                     }
                     break;
                 default: 
@@ -828,4 +828,18 @@ function applyHoursOfOperationtext(){
         }
     })
 }
+
+const hoursOfOperationDropDownBtns = document.querySelectorAll(".hours_of_operation_dropdown_btn");
+const hours_of_operation_list = document.querySelectorAll(".hours_of_operation_list")
+
+hoursOfOperationDropDownBtns.forEach(hours_of_operation_dropdown_btn => {
+    hours_of_operation_dropdown_btn.addEventListener("click", (event) => {
+        if(event.currentTarget.classList.contains("griffin")){
+            $(".hours_of_operation_list.griffin").toggleClass("active");
+        }
+        else{
+            $(".hours_of_operation_list.hampton").toggleClass("active");
+        }
+    })
+});
 applyHoursOfOperationtext();

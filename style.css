@@ -937,7 +937,7 @@ a.reviewBtn{
 
 /*Locations CSS*/
 .locations{
-    max-height: 85vh;
+    height: 85vh;
 }
 #map{
     grid-column: 6 / -1;
@@ -1022,8 +1022,6 @@ a.reviewBtn{
     grid-column: span 5;
     display: flex;
     flex-direction: column;
-    height: 85vh;
-    overflow-y: scroll;
 }
 .locations_container > span{
     margin-bottom: 25px;
@@ -1085,6 +1083,10 @@ a.reviewBtn{
 }
 .hours_of_operation_list.active{
     display: block;
+}
+.locations_card_container{
+    height: 85vh;
+    overflow-y: scroll;
 }
 
 

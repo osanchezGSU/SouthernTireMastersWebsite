@@ -847,12 +847,12 @@ applyHoursOfOperationtext();
 const scrollableDiv = document.getElementsByClassName('locations_container');
 
 // Prevent page scrolling when mouse is over the div
-scrollableDiv.addEventListener('wheel', function(event) {
+scrollableDiv.addEventListener('mousente', function(event) {
   // Only prevent default if the div is scrollable
   if (scrollableDiv.scrollHeight > scrollableDiv.clientHeight) {
     event.preventDefault();
     // Scroll the div manually based on wheel direction
-    if (event.deltaY > 0) {
+    if (event.deltaY > 0) { 
       scrollableDiv.scrollTop += 30; // Scroll down
     } else {
       scrollableDiv.scrollTop -= 30; // Scroll up

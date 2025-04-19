@@ -12,27 +12,27 @@ const routes = {
         description: ""
     },
     "/": {
-        template:"/views/home.html",
+        template:"./views/home.html",
         title: "",
         description: ""
     },
     "/tires": {
-        template:"/views/tires.html",
+        template:"./views/tires.html",
         title: "",
         description: ""
     },
     "/services": {
-        template:"/views/services.html",
+        template:"./views/services.html",
         title: "",
         description: ""
     },
     "/locations": {
-        template:"/views/locations.html",
+        template:"./views/locations.html",
         title: "",
         description: ""
     },
     "/tips-guides": {
-        template:"/views/tips-guides.html",
+        template:"./views/tips-guides.html",
         title: "",
         description: ""
     },
@@ -42,57 +42,57 @@ const routes = {
         description: ""
     },
     "/wheels": {
-        template:"/views/services/wheels.html",
+        template:"./views/services/wheels.html",
         title: "",
         description: ""
     },
     "/tire-installation": {
-        template:"/views/services/tire-installation.html",
+        template:"./views/services/tire-installation.html",
         title: "",
         description: ""
     },
     "/tire-balance": {
-        template:"views/services/tire-balance.html",
+        template:"./views/services/tire-balance.html",
         title: "",
         description: ""
     },
     "/tire-repairs": {
-        template:"views/services/tire-repairs.html",
+        template:"./views/services/tire-repairs.html",
         title: "",
         description: ""
     },
     "/tire-rotation": {
-        template:"views/services/tire-rotation.html",
+        template:"./views/services/tire-rotation.html",
         title: "",
         description: ""
     },
     "/tpms": {
-        template:"views/services/tpms.html",
+        template:"./views/services/tpms.html",
         title: "",
         description: ""
     },
     "/wheel-alignments": {
-        template:"views/services/wheel-alignemnts.html",
+        template:"./views/services/wheel-alignemnts.html",
         title: "",
         description: ""
     },
     "/suspension-check": {
-        template:"views/services/suspension-check.html",
+        template:"./views/services/suspension-check.html",
         title: "",
         description: ""
     },
     "/brake-check": {
-        template:"views/services/brake-check.html",
+        template:"./views/services/brake-check.html",
         title: "",
         description: ""
     },
      "/lift-lower-kits": {
-        template:"views/services/lift-lower-kits.html",
+        template:"./views/services/lift-lower-kits.html",
         title: "",
         description: ""
     }, 
     "/oil-change": {
-        template:"views/services/oil-change.html",
+        template:"./views/services/oil-change.html",
         title: "",
         description: ""
     }

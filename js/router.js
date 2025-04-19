@@ -7,7 +7,7 @@ const route = (event) => {
 
 const routes = {
     404: {
-        template: "/404.html",
+        template: "./404.html",
         title: "",
         description: ""
     },
